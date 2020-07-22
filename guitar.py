@@ -1,6 +1,7 @@
 
-#notes_in_song = ['E','D','C', 'A', 'G'] #Evil Woman, ELO
-notes_in_song = ['B', 'C#','D', 'E', 'F#','G#','A']
+notes_in_song = ['E','D','C', 'A', 'G'] #Evil Woman, ELO
+#notes_in_song = ['C'] #Evil Woman, ELO
+#notes_in_song = ['B', 'C#','D', 'E', 'F#','G#','A'] #B Dorian, A major, E major pentatonic scale
 
 chromatic = ['C','C#','D','D#','E','F','F#','G','G#','A','A#','B']
 whole_notes = ['C','C#','D','D#','E','F','F#','G','G#','A','A#','B']*3
@@ -35,9 +36,10 @@ for scale in scales:
     for chromaticnotes in chromatic:
         #print chromaticnotes
         currentscale = (get_notes(chromaticnotes, scales[scale]))
-        #print currentscale, " AND ", notes_in_song
-        if set(notes_in_song) & (set(currentscale)) == set(currentscale):
-            print (scale, chromaticnotes, "contains", notes_in_song)
+        #print "key of ",chromaticnotes, scale, currentscale, " AND ", notes_in_song
+        if all(x in currentscale for x in notes_in_song):
+        #if set(notes_in_song).intersection(set(currentscale)) == set(currentscale):
+            print (scale, chromaticnotes, currentscale,"contains notes of interest")
 
 #print get_notes('C', scales['minor'])
     
